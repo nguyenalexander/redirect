@@ -1,0 +1,33 @@
+  <div class="container">
+    <div class="col s12 m12">
+      <div class="row header">
+        <h3>Please enter your info to be redirected to {{title}}!</h3>
+      </div>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="name" type="text" ng-model="name" class="validate">
+              <label for="name">Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="company" type="text" ng-model="company" class="validate">
+              <label for="company">Company</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" ng-model="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field submission col s12">
+              <button ng-disabled="!isValid()" class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit(url)">Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
