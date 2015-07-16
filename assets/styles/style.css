@@ -4,3 +4,45 @@ input[type=text].invalid+label:after, input[type=text]:focus.invalid+label:after
   opacity: 1;
   min-width: 233px;
 }
+
+div.nav-wrapper {
+  height: 67.5px;
+  background-color: rgb(186, 188, 190);
+  box-shadow: none;
+  position: relative;
+}
+
+body {
+  font-family: "Helvetica Neue", arial, sans-serif;
+}
+
+a.logo {
+  position: absolute;
+  left: 60px;
+}
+
+img.emc-logo {
+  height: 90px;
+  width: 90px;
+}
+
+@media only screen and (min-width: 992px) {
+
+div.nav-wrapper {
+  height: 90px;
+}
+
+  a.logo {
+    position: absolute;
+    left: 45px;
+  }
+
+  img.emc-logo {
+    height: 120px;
+    width: 120px;
+  }
+}
+
+.btn {
+  width: inherit;
+}
