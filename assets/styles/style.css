@@ -16,6 +16,10 @@ body {
   font-family: "Helvetica Neue", arial, sans-serif;
 }
 
+.container {
+  margin-top: 12.5%;
+}
+
 a.logo {
   position: absolute;
   left: 60px;
@@ -27,6 +31,10 @@ img.emc-logo {
 }
 
 @media only screen and (min-width: 992px) {
+
+.container {
+  margin-top: 12.5%;
+}
 
 div.nav-wrapper {
   height: 90px;
