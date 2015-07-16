@@ -30,7 +30,17 @@ img.emc-logo {
   width: 90px;
 }
 
+.col.s12.url-container {
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
 @media only screen and (min-width: 992px) {
+
+.col.s12.url-container {
+  max-width: 100%;
+  word-wrap: break-word;
+}
 
 .container {
   margin-top: 12.5%;
