@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 			console.error('To fix this, please run:');
 			console.error('npm install include-all --save`');
 			console.error();
-
+			grunt.registerTask('heroku:development', 'clean less mincss');
 			grunt.registerTask('default', []);
 			return;
 		}
