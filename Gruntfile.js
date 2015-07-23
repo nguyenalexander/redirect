@@ -66,6 +66,7 @@ module.exports = function(grunt) {
 
 	// Load task functions
 	var taskConfigurations = loadTasks('./tasks/config'),
+		sassConfigurations = loadTasks('./node_modules/grunt-contrib-sass/tasks'),
 		registerDefinitions = loadTasks('./tasks/register');
 
 	// (ensure that a default task exists)
