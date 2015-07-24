@@ -21,16 +21,6 @@ app.filter('escape', function() {
 
 app.controller('MainCtrl', ['$scope', function($scope){
 
-  // $scope.isValid = function() {
-  //   return ($scope.name && $scope.email && $scope.company) !== undefined;
-  // }
-
-  // $scope.url = $routeParams.url
-
-  // $scope.submit = function(url) {
-  //   $window.location.href = 'http://' + url;
-  // }
-
 }]);
 
 app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce', function($scope, $routeParams, $window, $http, $sce){
