@@ -17,8 +17,10 @@ module.exports = {
     },
     company: {
       type: 'string'
+    },
+    version: {
+      type: 'string'
     }
-
   }
 };
 

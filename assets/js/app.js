@@ -24,8 +24,11 @@ app.controller('MainCtrl', ['$scope', function($scope){
 }]);
 
 app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce', '$interval', function($scope, $routeParams, $window, $http, $sce, $interval){
-
-  console.log('infoCtrl loaded')
+  $scope.url = $routeParams.url
+  $scope.title = $routeParams.title
+  $scope.version = $routeParams.id
+  $scope.timeOut = 10;
+  $scope.timerWatch = true;
 
   $scope.isValid = function() {
     return ($scope.name && $scope.email && $scope.company) !== undefined;
@@ -42,20 +45,12 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
     }
   }
 
-  $scope.url = $routeParams.url
-  $scope.title = $routeParams.title
-
-  console.log($scope.url, $scope.title, $routeParams.id)
-
-  $scope.timeOut = 10;
-  $scope.timerWatch = true;
-
   var setTimer = function() {
-    if ($routeParams.id == 'a') {
+    if ($scope.version == 'a') {
       $scope.requiredFields = true;
       $scope.showTimer = false;
       $scope.timeOut = false;
-    }else if ($routeParams.id == 'b') {
+    }else if ($scope.version == 'b') {
       $scope.requiredFields = false;
       $scope.showTimer = true;
       timer = $interval(function() {
@@ -94,13 +89,15 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
 
 
   $scope.submit = function(url) {
-    $http.post('/user', {name: $scope.name, email: $scope.email, company: $scope.company, timer: $scope.showTimer}).success(function(user){
+    console.log('Sent Params ************')
+    console.log($scope.name, $scope.email, $scope.company, $scope.showTimer, $scope.version)
+    $http.post('/user', {name: $scope.name, email: $scope.email, company: $scope.company, timer: $scope.showTimer, version: $scope.version}).success(function(user){
       console.log(user)
-      if (($scope.url).indexOf('http://') == -1) {
-        $window.location.href = 'http://' + url;
-      }else{
-        $window.location.href = url;
-      }
+      // if (($scope.url).indexOf('http://') == -1) {
+      //   $window.location.href = 'http://' + url;
+      // }else{
+      //   $window.location.href = url;
+      // }
     })
   }
 

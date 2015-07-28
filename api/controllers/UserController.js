@@ -11,7 +11,7 @@ module.exports = {
     var email = req.body.email,
         name = req.body.name,
         company = req.body.company
-    User.findOrCreate({email: email, name: name, company: company}).then(function(user){
+    User.create(req.body).then(function(user){
       res.send(user)
     })
   }
