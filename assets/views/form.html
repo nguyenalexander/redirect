@@ -7,23 +7,27 @@
         <form class="col s8 offset-s2 m12">
           <div class="row">
             <div class="input-field col s12 m6">
-              <input id="name" type="text" ng-model="name" pattern=".{4,}" required class="validate">
+              <input id="name" type="text" ng-model="name" pattern=".{4,}" class="{validate: requiredFields}">
               <label for="name" data-error="This field is required (at least 4 characters)">Name</label>
             </div>
             <div class="input-field col s12 m6">
-              <input id="company" type="text" ng-model="company" pattern=".{2,}" required class="validate">
+              <input id="company" type="text" ng-model="company" pattern=".{2,}" class="{validate: requiredFields}">
               <label for="company" data-error="This field is required (at least 2 characters)">Company</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m12">
-              <input id="email" type="email" ng-model="email" class="validate">
+              <input id="email" type="email" ng-model="email" ng-class="{validate: requiredFields}">
               <label for="email" data-error="This doesn't appear to be a valid email.">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field submission col s12">
-              <button ng-disabled="!isValid()" class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit(url)">Submit
+              <button ng-if="showTimer" ng-disabled="!isValidTimer()" class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit(url)">
+                {{message}}
+              </button>
+              <button ng-if="!showTimer" ng-disabled="!isValid()" class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit(url)">
+                {{message}}
               </button>
             </div>
           </div>
