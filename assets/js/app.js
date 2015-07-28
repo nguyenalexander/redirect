@@ -63,6 +63,11 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
           $interval.cancel(timer)
         }
       }, 1000)
+    }else if ($scope.version == 'c') {
+      $scope.requiredFields = true;
+      $scope.showTimer = false;
+      $scope.timeOut = false;
+      $scope.skipThis = true;
     }
   }
 
