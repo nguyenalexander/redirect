@@ -91,13 +91,13 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
   $scope.submit = function(url) {
     console.log('Sent Params ************')
     console.log($scope.name, $scope.email, $scope.company, $scope.showTimer, $scope.version)
-    $http.post('/user', {name: $scope.name, email: $scope.email, company: $scope.company, timer: $scope.showTimer, version: $scope.version, url: $scope.url}).success(function(user){
+    $http.post('/user', {name: $scope.name, email: $scope.email, company: $scope.company, timer: $scope.showTimer, version: $scope.version, url: $scope.url, urlTitle: $scope.title}).success(function(user){
       console.log(user)
-      // if (($scope.url).indexOf('http://') == -1) {
-      //   $window.location.href = 'http://' + url;
-      // }else{
-      //   $window.location.href = url;
-      // }
+      if (($scope.url).indexOf('http://') == -1) {
+        $window.location.href = 'http://' + url;
+      }else{
+        $window.location.href = url;
+      }
     })
   }
 
