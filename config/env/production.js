@@ -13,13 +13,13 @@
 module.exports = {
 
     connections:{
-        mongoDbServerProd: {
-            adapter: 'sails-mongo',
-            url: process.env.MONGOLAB_URI
+        postgresqlDbServerProd: {
+            adapter: 'sails-postgresql',
+            url: process.env.DATABASE_URL
         }
     },
 
     models:{
-        connection: 'mongoDbServerProd'
+        connection: 'postgresqlDbServerProd'
     }
 };

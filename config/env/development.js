@@ -13,17 +13,18 @@
 module.exports = {
 
     connections:{
-      mongoDbServer: {
-        adapter: 'sails-mongo',
+      postgresqlDbServer: {
+        adapter: 'sails-postgresql',
         host: 'localhost',
-        port: 27017,
+        port: 5432,
         // user: 'username',
         // password: 'password',
-        database: 'crown-social-redirect'
+        database: 'crown-social-redirect',
+        schema: true
       }
     },
     models:{
-        connection: 'mongoDbServer',
+        connection: 'postgresqlDbServer',
         migrate: 'alter'
     }
 };

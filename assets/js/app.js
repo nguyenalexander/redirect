@@ -98,11 +98,11 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
     console.log($scope.name, $scope.email, $scope.company, $scope.showTimer, $scope.version)
     $http.post('/user', {name: $scope.name, email: $scope.email, company: $scope.company, timer: $scope.showTimer, version: $scope.version, url: $scope.url, urlTitle: $scope.title}).success(function(user){
       console.log(user)
-      if (($scope.url).indexOf('http://') == -1) {
-        $window.location.href = 'http://' + url;
-      }else{
-        $window.location.href = url;
-      }
+      // if (($scope.url).indexOf('http://') == -1) {
+      //   $window.location.href = 'http://' + url;
+      // }else{
+      //   $window.location.href = url;
+      // }
     })
   }
 
