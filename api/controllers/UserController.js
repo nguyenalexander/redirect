@@ -11,9 +11,15 @@ module.exports = {
     var email = req.body.email,
         name = req.body.name,
         company = req.body.company
-    User.create(req.body).then(function(user){
-      res.send(user)
-    })
+
+
+    if (req.body.email != undefined && req.body.name != undefined && req.body.company != undefined){
+      User.create(req.body).then(function(user){
+        res.send(user)
+      })
+    }else{
+      res.send({userCreated: false, skipped: true})
+    }
   }
 
 };
