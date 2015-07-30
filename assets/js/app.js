@@ -14,9 +14,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'InfoCtrl',
     templateUrl: '../views/form.html'
   })
+  .when('/redirect', {
+    controller: 'MainCtrl',
+    templateUrl: '../views/home.html'
+  })
   .otherwise({
     controller: 'MainCtrl',
-    redirectTo: '/redirect/google.com/Google/c'
+    redirectTo: '/redirect'
   })
 }])
 
@@ -24,16 +28,38 @@ app.filter('escape', function() {
   return window.encodeURIComponent;
 });
 
-app.controller('MainCtrl', ['$scope', function($scope){
-  console.log('main ctrl loaded')
+app.controller('MainCtrl', ['$scope', '$window', '$location', function($scope, $window, $location){
+  $window.location.href = "http://emc.com"
 }]);
 
-app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce', '$interval', function($scope, $routeParams, $window, $http, $sce, $interval){
+app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce', '$interval', '$location', function($scope, $routeParams, $window, $http, $sce, $interval, $location){
   $scope.url = $routeParams.url
   $scope.title = $routeParams.title
   $scope.version = $routeParams.id
   $scope.timeOut = 10;
   $scope.timerWatch = true;
+
+  console.log($routeParams.id, $routeParams.title, $routeParams.url)
+
+  if($routeParams.id){
+    switch($routeParams.id) {
+      case 'a':
+        console.log('valid route param a',$routeParams.id)
+        break;
+      case 'A':
+        console.log('valid route param A',$routeParams.id)
+        break;
+      case 'B':
+        console.log('valid route param B',$routeParams.id)
+        break;
+      case 'b':
+        console.log('valid route param b',$routeParams.id)
+        break;
+      default:
+        $location.url('/redirect/'+$routeParams.url+'/'+$routeParams.title+'/a')
+        break;
+    }
+  }
 
   $scope.isValid = function() {
     return ($scope.name && $scope.email && $scope.company) !== undefined;
@@ -51,24 +77,26 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
   }
 
   var setTimer = function() {
-    if ($scope.version == 'a') {
+    if ($scope.version == 'a' || $scope.version == 'A') {
       $scope.requiredFields = true;
       $scope.showTimer = false;
       $scope.timeOut = false;
-    }else if ($scope.version == 'b') {
-      $scope.requiredFields = false;
-      $scope.showTimer = true;
-      timer = $interval(function() {
-        if ($scope.timeOut > 0){
-          $scope.timeOut -= 1;
-          return ($scope.timeOut)
-        }else if ($scope.timeOut == 0){
-          $scope.timerWatch = false
-          console.log('cancel', $scope.timeOut, $scope.timerWatch)
-          $interval.cancel(timer)
-        }
-      }, 1000)
-    }else if ($scope.version == 'c') {
+    }
+    // else if ($scope.version == 'b') {
+    //   $scope.requiredFields = false;
+    //   $scope.showTimer = true;
+    //   timer = $interval(function() {
+    //     if ($scope.timeOut > 0){
+    //       $scope.timeOut -= 1;
+    //       return ($scope.timeOut)
+    //     }else if ($scope.timeOut == 0){
+    //       $scope.timerWatch = false
+    //       console.log('cancel', $scope.timeOut, $scope.timerWatch)
+    //       $interval.cancel(timer)
+    //     }
+    //   }, 1000)
+    // }
+    else if ($scope.version == 'b' || $scope.version == 'B') {
       $scope.requiredFields = true;
       $scope.showTimer = false;
       $scope.timeOut = false;
@@ -87,11 +115,11 @@ app.controller('InfoCtrl', ['$scope', '$routeParams', '$window', '$http', '$sce'
       $scope.message = 'Please wait '+$scope.timeOut+' more second to proceed.'
     }else if ($scope.timeOut == 0) {
       $scope.timerWatch = false;
-      $scope.message = 'Submit!'
+      $scope.message = 'Submit'
     }
     else if($scope.showTimer == false) {
       $scope.timerWatch == false;
-      $scope.message = 'Submit!'
+      $scope.message = 'Submit'
     }
   })
 
