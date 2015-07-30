@@ -17,8 +17,8 @@ module.exports = {
         adapter: 'sails-postgresql',
         host: 'localhost',
         port: 5432,
-        // user: 'username',
-        // password: 'password',
+        user: 'timon',
+        password: 'pwd',
         database: 'crown-social-redirect',
         schema: true
       }
