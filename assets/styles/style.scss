@@ -64,3 +64,21 @@ div.nav-wrapper {
 .btn {
   width: inherit;
 }
+
+footer.page-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.copyright {
+  margin: 5%;
+}
+
+footer.page-footer .footer-copyright {
+    overflow: visible;
+    height: 50px;
+    line-height: 50px;
+    color: rgba(35, 25, 35, 1) !important;
+    background-color: rgba(51, 51, 51, 0.08) !important;
+}
