@@ -2,13 +2,6 @@ var app = angular.module('cs-redirect', ['ngAnimate', 'ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 
-  $locationProvider.html5Mode(true);
-
-  // var absoluteUrl = $location.absUrl();
-
-  // console.log($route.path, $route.current)
-
-
   $routeProvider
   .when('/redirect/:url*\/:title/:id', {
     controller: 'InfoCtrl',
