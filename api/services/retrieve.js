@@ -28,7 +28,7 @@ module.exports = {
                 } else {
                     var filename = Date.now() + '-datadump.json';
 
-                    fs.writeFile(process.cwd() + '/' + filename, JSON.stringify(usersJSON), function(err) {
+                    fs.writeFile(process.cwd() + '/assets/files/' + filename, JSON.stringify(usersJSON), function(err) {
                         if(err) {
                             console.log("FILE WRITE ERROR:",err);
                         } else {

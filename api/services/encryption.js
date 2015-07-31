@@ -17,21 +17,21 @@ module.exports = {
     decrypt: function(cipherText, password, salt, iv) {
         console.log("Begin decryption");
         var decodedSalt = forge.util.decode64(salt);
-        console.log("salt decoded");
+        // console.log("salt decoded");
         var decodedIv = forge.util.decode64(iv);
-        console.log("iv decoded");
+        // console.log("iv decoded");
         var decodedCipherText = forge.util.decode64(cipherText)
-        console.log("cipher text decoded");
+        // console.log("cipher text decoded");
         var key = forge.pkcs5.pbkdf2(password, decodedSalt, 10, 16);
-        console.log("key generated");
+        // console.log("key generated");
         var decipher = forge.cipher.createDecipher('AES-CBC', key);
-        console.log("decipher set");
+        // console.log("decipher set");
         decipher.start({iv: decodedIv});
-        console.log("decipher started");
+        // console.log("decipher started");
         decipher.update(forge.util.createBuffer(decodedCipherText));
-        console.log("decipher running");
+        // console.log("decipher running");
         decipher.finish();
-        console.log("decipher finished");
+        // console.log("decipher finished");
         console.log(decipher.output.toString())
         return decipher.output.toString();
     }
