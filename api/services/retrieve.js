@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 module.exports = {
-    all: function(print?) {
+    all: function(print) {
         User.find().exec(function(err, users) {
             if(err) {
                 console.log("ERROR:",err);
@@ -23,12 +23,12 @@ module.exports = {
                     return userJSON;
                 });
 
-                if(print?) {
+                if(print) {
                     console.log(JSON.stringify(usersJSON));
                 } else {
                     var filename = Date.now() + '-datadump.json';
 
-                    fs.writeFile(process.cwd() + '/' + filename, JSON.stringify(usersJSON), function(err) {
+                    fs.writeFile(process.cwd() + '/assets/files/' + filename, JSON.stringify(usersJSON), function(err) {
                         if(err) {
                             console.log("FILE WRITE ERROR:",err);
                         } else {
