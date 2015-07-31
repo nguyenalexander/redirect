@@ -2,7 +2,7 @@ var app = angular.module('cs-redirect', ['ngAnimate', 'ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 
-  // $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true);
 
   // var absoluteUrl = $location.absUrl();
 
